@@ -1,0 +1,620 @@
+/* --- ROOT VARIABLES (LIGHT & DARK MODE) --- */
+:root {
+    --bg-color: #e5e5e5;
+    --bg-pattern: #d0d0d0;
+    --card-bg: #ffffff;
+    --text-color: #000000;
+    --border-color: #000000;
+    --shadow-color: #000000;
+    --header-bg: #dcdcdc;
+    --btn-hover: #000000;
+    --btn-hover-text: #ffffff;
+    --border-width: 2px;
+}
+
+[data-theme="dark"] {
+    --bg-color: #121212;
+    --bg-pattern: #1e1e1e;
+    --card-bg: #1e1e1e;
+    --text-color: #f0f0f0;
+    --border-color: #ffffff;
+    --shadow-color: #ffffff;
+    --header-bg: #2a2a2a;
+    --btn-hover: #ffffff;
+    --btn-hover-text: #000000;
+}
+
+/* --- RESET & BASE STYLES --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    background-color: var(--bg-color);
+    background-image: radial-gradient(var(--bg-pattern) 1px, transparent 0);
+    background-size: 8px 8px;
+    color: var(--text-color);
+    line-height: 1.6;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* --- CONTAINER (FULL ON DESKTOP & RESPONSIVE ON ALL SCREENS) --- */
+.container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 clamp(16px, 3.5vw, 48px);
+}
+
+/* --- RETRO MAC HEADER --- */
+.mac-header {
+    background-color: var(--header-bg);
+    border-bottom: var(--border-width) solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 10px 0;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: bold;
+    font-size: clamp(0.9rem, 1.4vw, 1.1rem);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.brand-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.logo-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 16px;
+    align-items: center;
+}
+
+nav ul li a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.95rem;
+    padding: 6px 12px;
+    border: var(--border-width) solid transparent;
+    transition: all 0.15s ease;
+    display: inline-block;
+}
+
+nav ul li a:hover {
+    border-color: var(--border-color);
+    background-color: var(--card-bg);
+    box-shadow: 2px 2px 0px var(--shadow-color);
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.theme-toggle, .mobile-menu-btn {
+    background: var(--card-bg);
+    border: var(--border-width) solid var(--border-color);
+    color: var(--text-color);
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 1rem;
+    box-shadow: 2px 2px 0px var(--shadow-color);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.mobile-menu-btn {
+    display: none;
+}
+
+.theme-toggle:active, .mobile-menu-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: none;
+}
+
+/* --- RETRO BUTTONS --- */
+.retro-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.95rem;
+    border: var(--border-width) solid var(--border-color);
+    box-shadow: 3px 3px 0px var(--shadow-color);
+    transition: all 0.1s ease;
+    cursor: pointer;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.retro-btn.primary {
+    background-color: var(--card-bg);
+}
+
+.retro-btn:hover {
+    background-color: var(--btn-hover);
+    color: var(--btn-hover-text);
+}
+
+.retro-btn:active {
+    transform: translate(3px, 3px);
+    box-shadow: 0px 0px 0px var(--shadow-color);
+}
+
+.retro-btn.sm {
+    padding: 6px 14px;
+    font-size: 0.85rem;
+}
+
+/* --- RETRO MAC WINDOW COMPONENT --- */
+.mac-window {
+    background-color: var(--card-bg);
+    border: var(--border-width) solid var(--border-color);
+    box-shadow: 4px 4px 0px var(--shadow-color);
+    margin-bottom: 24px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.window-header {
+    background-color: var(--header-bg);
+    border-bottom: var(--border-width) solid var(--border-color);
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    gap: 8px;
+}
+
+.window-dots {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.window-dots span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
+    background-color: var(--card-bg);
+}
+
+.window-title {
+    font-size: 0.82rem;
+    font-weight: bold;
+    margin: 0 auto;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0 6px;
+}
+
+.window-body {
+    padding: 24px;
+}
+
+/* --- HERO SECTION --- */
+.hero-section {
+    padding: clamp(30px, 6vw, 60px) 0;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.25fr 0.75fr;
+    gap: clamp(24px, 4vw, 50px);
+    align-items: center;
+}
+
+.hero-text h1 {
+    font-size: clamp(2.2rem, 4.2vw, 3.6rem);
+    line-height: 1.15;
+    font-weight: 900;
+    margin-bottom: 20px;
+    word-break: break-word;
+}
+
+.hero-subtitle {
+    font-size: clamp(1rem, 1.2vw, 1.2rem);
+    margin-bottom: 26px;
+    max-width: 650px;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.illustration-box {
+    margin-bottom: 0;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+.center-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+    padding: 16px;
+}
+
+.retro-hero-icon {
+    font-size: 5rem;
+}
+
+.retro-hero-img {
+    width: 100%;
+    max-width: 320px;
+    max-height: 360px;
+    height: auto;
+    object-fit: cover;
+    border: var(--border-width) solid var(--border-color);
+    box-shadow: 3px 3px 0px var(--shadow-color);
+    display: block;
+    margin: 0 auto;
+}
+
+/* --- QUICK LINKS SECTION --- */
+.quick-links-section {
+    margin-bottom: 48px;
+}
+
+.sub-heading {
+    font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+    margin-bottom: 12px;
+    font-weight: bold;
+}
+
+.quick-links-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.quick-link-card {
+    background-color: var(--card-bg);
+    border: var(--border-width) solid var(--border-color);
+    box-shadow: 3px 3px 0px var(--shadow-color);
+    padding: 12px 18px;
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.95rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.15s ease;
+}
+
+.quick-link-card:hover {
+    background-color: var(--btn-hover);
+    color: var(--btn-hover-text);
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px var(--shadow-color);
+}
+
+.quick-link-card:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px var(--shadow-color);
+}
+
+/* --- PROJECTS & CARDS --- */
+.section-padding {
+    padding: 30px 0;
+}
+
+.main-heading {
+    font-size: clamp(1.8rem, 2.8vw, 2.4rem);
+    margin-bottom: 24px;
+    border-bottom: var(--border-width) solid var(--border-color);
+    display: inline-block;
+    padding-bottom: 4px;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.projects-grid .mac-window {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0;
+    height: 100%;
+}
+
+.projects-grid .window-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.projects-grid .window-body .retro-btn {
+    margin-top: auto;
+    align-self: flex-start;
+}
+
+.card-img-placeholder {
+    background-color: var(--header-bg);
+    border: var(--border-width) solid var(--border-color);
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.card-desc {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 18px;
+    color: var(--text-color);
+    flex-grow: 1;
+}
+
+/* --- ABOUT SECTION --- */
+.about-text {
+    font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+    line-height: 1.8;
+}
+
+/* --- SKILLS SECTION --- */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.skills-grid .mac-window {
+    margin-bottom: 0;
+    height: 100%;
+}
+
+.skills-grid .window-body h3 {
+    font-size: 1.05rem;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.skills-grid .window-body p {
+    font-size: 0.88rem;
+    line-height: 1.5;
+}
+
+/* --- FOOTER / CONTACT --- */
+.footer-section {
+    padding: 50px 0 30px;
+}
+
+.footer-content {
+    text-align: center;
+    padding: clamp(24px, 4vw, 40px);
+}
+
+.footer-content h2 {
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    margin-bottom: 24px;
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.copyright {
+    font-size: 0.8rem;
+    border-top: var(--border-width) dashed var(--border-color);
+    padding-top: 18px;
+    margin-top: 10px;
+}
+
+/* ==========================================================================
+   MEDIA QUERIES (RESPONSIVE TABLET & ANDROID / MOBILE)
+   ========================================================================== */
+
+/* --- TABLET (Landscape & Large Tablet: max-width: 1024px) --- */
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 24px;
+    }
+
+    .hero-grid {
+        gap: 30px;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+    }
+
+    .quick-links-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+    }
+}
+
+/* --- TABLET PORTRAIT / SMALL TABLETS (max-width: 868px) --- */
+@media (max-width: 868px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 32px;
+    }
+
+    .hero-subtitle {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-actions {
+        justify-content: center;
+    }
+
+    .illustration-box {
+        max-width: 320px;
+    }
+
+    .quick-links-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* --- ANDROID & MOBILE PHONES (max-width: 768px) --- */
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: inline-flex;
+    }
+
+    nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--header-bg);
+        border-bottom: var(--border-width) solid var(--border-color);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        padding: 16px;
+    }
+
+    nav.active {
+        display: block;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        width: 100%;
+    }
+
+    nav ul li {
+        width: 100%;
+    }
+
+    nav ul li a {
+        display: block;
+        text-align: center;
+        padding: 10px 16px;
+        background-color: var(--card-bg);
+        border: var(--border-width) solid var(--border-color);
+        box-shadow: 2px 2px 0px var(--shadow-color);
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .window-body {
+        padding: 18px;
+    }
+}
+
+/* --- SMALL ANDROID & SMARTPHONES (max-width: 480px) --- */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 14px;
+    }
+
+    .hero-section {
+        padding: 24px 0 36px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .hero-actions .retro-btn {
+        width: 100%;
+    }
+
+    .quick-links-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .card-img-placeholder {
+        height: 120px;
+        font-size: 2rem;
+    }
+
+    .contact-links {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .contact-links .retro-btn {
+        width: 100%;
+    }
+
+    .brand {
+        max-width: 200px;
+    }
+}
