@@ -388,6 +388,19 @@ nav ul li a:hover {
     align-items: center;
     font-size: 2.5rem;
     margin-bottom: 16px;
+    overflow: hidden;
+}
+
+.card-img-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.projects-grid .mac-window:hover .card-img-placeholder img {
+    transform: scale(1.05);
 }
 
 .card-title {
